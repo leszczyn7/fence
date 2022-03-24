@@ -1,4 +1,5 @@
 /* 
+v 1.6a 
 Miroslaw Leszczynski 
 m.leszczynski@norcom.net.pl
 */
