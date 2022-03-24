@@ -1,15 +1,23 @@
-// fence v.1.3
+/* 
+Miroslaw Leszczynski 
+m.leszczynski@norcom.net.pl
+*/
 #include <iostream>
+#include <limits>
 using namespace std;
 
 class Farm {
   public:
-    int fenceLenght;
-    int area(int a) {
-      int b = fenceLenght - 2 * a;
+    int area(int a, int b) {
       return a * b;
     }
 };
+int takeFenceLength() {
+  cout << "Enter the lenght of your fence (only numbers): ";
+  int fenceLenght;
+  cin >> fenceLenght;
+  return fenceLenght;
+}
 
 int main() {
   string doRun;
@@ -18,29 +26,36 @@ int main() {
   if (doRun.compare("RUN")) {
       return 0;
   }
-
   int fenceLenght = 0;
-  while (fenceLenght < 3) {
-    // cin.clear();
-    // cin.ignore(numeric_limits<int 3>::max());
-    cout << "Enter lenght of your fence (onl int number): ";
-    cin >> fenceLenght;
-  } 
+  do {
+    cout << "Enterthe lenght of your fence (onl numbers): ";
+    if(cin >> fenceLenght) break;
+    cin.clear();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  } while (true);
 
-  int area = 0;
+  int a = 1;
+  int b = fenceLenght - 2 * a;
+  int currentArea = 0;
   int bestA = 0;
+  int bestB = 0;
+  int bestArea = 0;
   Farm farm;
-  farm.fenceLenght = fenceLenght;
-  for (int a = 1; a < fenceLenght/2 + 1; a++) {
-    if(farm.area(a)>area) {
-      area = farm.area(a);
+  while (b > 0) {
+    currentArea = farm.area(a, b);
+    if (currentArea > bestArea) {
       bestA = a;
+      bestArea = currentArea;
     }
+    ++a;
+    b = fenceLenght - 2 * a;
   }
+  bestB = fenceLenght - 2 * bestA;
+  bestArea = bestA * bestB;
     
-  cout << "\nMax area for the fence length " << fenceLenght << " is: " << area << endl;
-  cout << " for a = " << bestA << endl;
-  cout << " and b = " << fenceLenght - 2 * bestA << "\n\n";
-  cout << "Do you need hummer?" << "\n\n";
+  cout << "a = " << bestA<< endl;
+  cout << "b = " << bestB << endl;
+  cout << "Max area: " << bestArea << endl;
+  cout << endl;
   return 0;
 }
