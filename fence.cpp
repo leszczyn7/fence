@@ -1,4 +1,4 @@
-// fence v.1.1
+// fence v.1.2
 #include <iostream>
 using namespace std;
 
