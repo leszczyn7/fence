@@ -1,4 +1,4 @@
-// fence v.1.2
+// fence v.1.3
 #include <iostream>
 using namespace std;
 
@@ -41,5 +41,6 @@ int main() {
   cout << "\nMax area for the fence length " << fenceLenght << " is: " << area << endl;
   cout << " for a = " << bestA << endl;
   cout << " and b = " << fenceLenght - 2 * bestA << "\n\n";
+  cout << "Do you need hummer?" << "\n\n";
   return 0;
 }
