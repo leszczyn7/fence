@@ -1,4 +1,4 @@
-/* v 2.0 m.leszczynski@norcom.net.pl */
+/* v 2.1 m.leszczynski@norcom.net.pl */
 #include <iostream>
 #include <limits>
 #include <string>
@@ -22,9 +22,9 @@ int main() {
   string cinFenceLength = "";
   long fenceLength = 0;
   do {
-    cout << "Enterthe lenght of your fence (only numbers) > 2 and < 8589934591: ";
+    cout << "Enterthe lenght of your fence (only numbers) > 2 and <= 8589934591: ";
     // 8589934591 = sqrt(8*LONG_MAX)
-    // bestA = ceil(fencelength/4)
+    // bestA = ceil(fenceLength/4)
     // bestB = fenceLength - 2 * bestA;
     cin >> cinFenceLength;
     fenceLength = atol(cinFenceLength.c_str());
