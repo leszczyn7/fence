@@ -1,24 +1,16 @@
-/* 
-v 1.6a 
-Miroslaw Leszczynski 
-m.leszczynski@norcom.net.pl
-*/
+/* v 2.0 m.leszczynski@norcom.net.pl */
 #include <iostream>
 #include <limits>
+#include <string>
+#include <cmath>
 using namespace std;
 
 class Farm {
   public:
-    int area(int a, int b) {
+    long area(unsigned long a, unsigned long b) {
       return a * b;
     }
 };
-int takeFenceLength() {
-  cout << "Enter the lenght of your fence (only numbers): ";
-  int fenceLenght;
-  cin >> fenceLenght;
-  return fenceLenght;
-}
 
 int main() {
   string doRun;
@@ -26,21 +18,24 @@ int main() {
   cin >> doRun;
   if (doRun.compare("RUN")) {
       return 0;
-  }
-  int fenceLenght = 0;
+  } 
+  string cinFenceLength = "";
+  long fenceLength = 0;
   do {
-    cout << "Enterthe lenght of your fence (onl numbers): ";
-    if(cin >> fenceLenght) break;
-    cin.clear();
-    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  } while (true);
+    cout << "Enterthe lenght of your fence (only numbers) > 2 and < 8589934591: ";
+    // 8589934591 = sqrt(8*LONG_MAX)
+    // bestA = ceil(fencelength/4)
+    // bestB = fenceLength - 2 * bestA;
+    cin >> cinFenceLength;
+    fenceLength = atol(cinFenceLength.c_str());
+  } while (fenceLength < 3 || fenceLength > 8589934591);
 
-  int a = 1;
-  int b = fenceLenght - 2 * a;
-  int currentArea = 0;
-  int bestA = 0;
-  int bestB = 0;
-  int bestArea = 0;
+  long a = 1;
+  long b = fenceLength - 2 * a;
+  long currentArea = 0;
+  long bestA = 0;
+  long bestB = 0;
+  long bestArea = 0;
   Farm farm;
   while (b > 0) {
     currentArea = farm.area(a, b);
@@ -49,9 +44,9 @@ int main() {
       bestArea = currentArea;
     }
     ++a;
-    b = fenceLenght - 2 * a;
+    b = fenceLength - 2 * a;
   }
-  bestB = fenceLenght - 2 * bestA;
+  bestB = fenceLength - 2 * bestA;
   bestArea = bestA * bestB;
     
   cout << "a = " << bestA<< endl;
