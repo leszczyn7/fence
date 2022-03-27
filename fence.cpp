@@ -1,4 +1,4 @@
-/* v 2.1 m.leszczynski@norcom.net.pl */
+/* v 2.1a m.leszczynski@norcom.net.pl */
 #include <iostream>
 #include <limits>
 #include <string>
@@ -7,7 +7,7 @@ using namespace std;
 
 class Farm {
   public:
-    long area(unsigned long a, unsigned long b) {
+    long area(long a, long b) {
       return a * b;
     }
 };
