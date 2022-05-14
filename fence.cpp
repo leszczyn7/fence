@@ -1,4 +1,5 @@
 /* v 2.1a m.leszczynski@norcom.net.pl */
+// new
 #include <iostream>
 #include <limits>
 #include <string>
